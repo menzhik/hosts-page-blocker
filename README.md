@@ -1,5 +1,9 @@
 # hosts-page-blocker
 
+[![Python 3.6+](https://img.shields.io/badge/python-3.6+-blue.svg)](https://www.python.org/downloads/)
+[![Ruff](https://img.shields.io/endpoint?url=https://raw.githubusercontent.com/astral-sh/ruff/main/assets/badge/v2.json)](https://github.com/astral-sh/ruff)
+[![CI](https://github.com/menzhik/hosts-page-blocker/workflows/Ruff%20Check/badge.svg)](https://github.com/menzhik/hosts-page-blocker/actions)
+
 Block distracting websites at the OS level via `/etc/hosts`.
 
 Harder to bypass than browser extensions (requires OS-level file editing)
