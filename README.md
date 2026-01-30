@@ -1,37 +1,75 @@
-﻿# hostsPageBlocker
+# hosts-page-blocker
 
-Need to focus but keep getting distracted by random websites?
-This tool helps you easily block them via simply editing `hosts` file. Plain Python, no installation of anything additional needed.
+Block distracting websites at the OS level via `/etc/hosts`.
 
-Field tested during university! 🔥 
+Harder to bypass than browser extensions (requires OS-level file editing)
 
-### Prerequisites
-- Python 3.6 or newer
+**Target use-case:** Block distracting websites (e.g. social media, news, messaging) during focused work hours.
+
+## Prerequisites
+
+- Python 3.6 or newer (stdlib only, no dependencies)
 - Admin/root privileges (required to modify hosts file)
-- Windows or Linux
+- Linux, macOS, or Windows
 
-## Getting started:
-1. Clone the repo
+## Usage
+
+1. Clone the repo:
+
 ```sh
-git clone https://github.com/mcjmk/hostsPageBlocker.git
-cd hostsPageBlocker
+git clone https://github.com/menzhik/hosts-page-blocker.git
+cd hosts-page-blocker
 ```
 
-2. Using terminal with admin rights do:
+2. Run with admin/root privileges:
+
 ```sh
+# Linux/macOS
+sudo python3 main.py
+
+# Windows (run terminal as Administrator)
 python main.py
-``` 
+```
 
-3. Answer prompt:
+3. Enter URLs to block:
 
-Example:
 ```sh
 Number of pages: 1
 Enter URL: example.com
-URLs have been successfully blocked!
 ```
 
+**Re-running the script is safe** — it replaces the old block instead of appending duplicates.
 
+## How it works
 
-### License
-This project is licensed under the [MIT License](LICENSE).
+The tool adds entries to your system's hosts file between markers:
+
+```
+# hosts-page-blocker BEGIN
+0.0.0.0        example.com
+::1            example.com
+0.0.0.0        www.example.com
+::1            www.example.com
+# hosts-page-blocker END
+```
+
+Examples use placeholder domains (`example.com`). Replace them locally with the domains you want to block.
+
+## Development
+
+For contributors (optional, not required for users):
+
+```sh
+# Install uv (if not already installed)
+curl -LsSf https://astral.sh/uv/install.sh | sh
+
+# Install dev dependencies
+uv sync
+
+# Run linter
+uv run ruff check
+```
+
+## License
+
+MIT License — see [LICENSE](LICENSE)
